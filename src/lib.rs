@@ -15,7 +15,9 @@ pub mod util {
             .unwrap()
             .join("src")
             .join("bin")
-            .join(&day_and_question);
+            .join(&day_and_question.to_string_lossy().replace(".exe", ""));
+
+        dbg!(&dir);
         let input = read_to_string(dir.join("input")).unwrap();
         let answer = callback(input);
         write(dir.join("output"), &answer).unwrap();
